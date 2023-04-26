@@ -1,43 +1,39 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
-import React, { useState } from 'react';
-import './App.css';
-import foodData from './Data';
+import React, { useState } from "react";
+import "./App.css";
+import foodData from "./Data";
 
 function FoodCard({
-  name, calories, imageUrl, ingredients, price, foodCategory,
+  name,
+  calories,
+  imageUrl,
+  ingredients,
+  price,
+  foodCategory,
 }) {
   return (
     <div className="food-card">
       <img src={imageUrl} alt={name} className="food-image" />
       <h2 className="food-title">{name}</h2>
       <p className="food-description">
-        <strong>Calories:</strong>
-        {' '}
-        {calories}
+        <strong>Calories:</strong> {calories}
       </p>
       <p className="food-description">
-        <strong>Ingredients:</strong>
-        {' '}
-        {ingredients}
+        <strong>Ingredients:</strong> {ingredients}
       </p>
       <p className="food-description">
-        <strong>Price:</strong>
-        {' '}
-        $
-        {price}
+        <strong>Price:</strong> ${price}
       </p>
       <p className="food-description">
-        <strong>Food Category:</strong>
-        {' '}
-        {foodCategory}
+        <strong>Food Category:</strong> {foodCategory}
       </p>
     </div>
   );
 }
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
@@ -47,8 +43,7 @@ function App() {
     <div className="app">
       <h1 className="header">Food Recommendations</h1>
       <label htmlFor="category-selector" className="category-label">
-        Select Food Category:
-        {' '}
+        Select Food Category:{" "}
       </label>
       <select
         name="category"
@@ -67,7 +62,9 @@ function App() {
       <div className="food-list">
         {foodData
           .filter(
-            (food) => selectedCategory === 'All' || food.FoodCategory === selectedCategory,
+            (food) =>
+              selectedCategory === "All" ||
+              food.FoodCategory === selectedCategory
           )
           .map((food) => (
             <FoodCard
