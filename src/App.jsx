@@ -1,4 +1,5 @@
-/* eslint-disable import/named */
+/* eslint-disable no-unused-vars */
+
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
@@ -10,6 +11,7 @@ import { useState } from "react";
 import "./App.css";
 import foodData from "./Data";
 import FoodCard from "./components/FoodCard";
+import "/Users/jd/Developer/FRS/FRS APP/src/assets/bgImage.jpg";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("All");
