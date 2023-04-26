@@ -3,36 +3,6 @@
 /* eslint-disable react/prop-types */
 // import React from "react";
 
-// function FoodCard({
-//   name,
-//   calories,
-//   imageUrl,
-//   ingredients,
-//   price,
-//   foodCategory,
-// }) {
-//   return (
-//     <div className="food-card">
-//       <img src={imageUrl} alt={name} className="food-image" />
-//       <h2 className="food-title">{name}</h2>
-//       <p className="food-description">
-//         <strong>Calories:</strong> {calories}
-//       </p>
-//       <p className="food-description">
-//         <strong>Ingredients:</strong> {ingredients}
-//       </p>
-//       <p className="food-description">
-//         <strong>Price:</strong> ${price}
-//       </p>
-//       <p className="food-description">
-//         <strong>Food Category:</strong> {foodCategory}
-//       </p>
-//     </div>
-//   );
-// }
-
-// export default FoodCard;
-// src/FoodCard.js
 import { useState } from "react";
 import "/Users/jd/Developer/FRS/FRS APP/src/styles/FoodCard.css";
 
