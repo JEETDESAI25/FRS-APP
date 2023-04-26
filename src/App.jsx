@@ -1,3 +1,8 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
+/* eslint-disable quotes */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React, { useState } from "react";
