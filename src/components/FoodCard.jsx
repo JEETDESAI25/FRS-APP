@@ -1,21 +1,17 @@
-/* eslint-disable quotes */
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/prop-types */
-// import React from "react";
-
-import { useState } from "react";
+import react from "react";
+import PropTypes from "prop-types";
 import "/Users/jd/Developer/FRS/FRS APP/src/styles/FoodCard.css";
 
 function FoodCard({
   name,
   calories,
   imageUrl,
-  ingredients,
   price,
   foodCategory,
+  ingredients,
 }) {
-  const [rating, setRating] = useState("");
-  const [hoverRating, setHoverRating] = useState(0);
+  const [rating, setRating] = react.useState("");
+  const [hoverRating, setHoverRating] = react.useState(0);
 
   function handleRatingChange(value) {
     setRating(value);
@@ -59,5 +55,14 @@ function FoodCard({
     </div>
   );
 }
+
+FoodCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  calories: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  foodCategory: PropTypes.string.isRequired,
+  ingredients: PropTypes.string.isRequired,
+};
 
 export default FoodCard;
