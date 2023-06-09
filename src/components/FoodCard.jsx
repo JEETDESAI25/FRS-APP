@@ -1,10 +1,8 @@
 import react from 'react';
 import PropTypes from 'prop-types';
 import '/Users/jd/Developer/FRS/FRS APP/src/styles/FoodCard.css';
-// import { v4 as uuidv4 } from 'uuid';
-// import { db } from './firebase';
+
 function FoodCard({
-	// id,
 	name,
 	calories,
 	imageUrl,
@@ -20,18 +18,6 @@ function FoodCard({
 		setHoverRating(value);
 	}
 
-	// const handleSubmit = event => {
-	// 	event.preventDefault();
-
-	// 	const userId = uuidv4();
-
-	// 	db.ref('ratings/' + userId + '/' + id).set({
-	// 		rating: rating,
-	// 	});
-
-	// 	setRating('');
-	// };
-
 	return (
 		<div className='food-card'>
 			<img className='food-image' src={imageUrl} alt={`${name}`} />
@@ -43,7 +29,6 @@ function FoodCard({
 				Category: {foodCategory}
 			</p>
 			<form
-				// onSubmit={handleSubmit}
 				onSubmit={e => {
 					e.preventDefault();
 					console.log(`Rating for ${name}: ${rating}`);
