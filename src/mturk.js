@@ -1,85 +1,78 @@
 import AWS from 'aws-sdk';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mturkAccountBalance: null,
-    };
-  }
-  render() {
-    var accountBalanceToDisplay = 'loading...';
-    if (this.state.mturkAccountBalance != null) {
-      accountBalanceToDisplay = this.state.mturkAccountBalance;
-    }
+const AWS = require('aws-sdk');
 
-    return (
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to my MTurk application</h1>
-        </header>
-        <p className='App-intro'>
-          Your account balance is {accountBalanceToDisplay}
-        </p>
-      </div>
-    );
-  }
-}
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mturkAccountBalance: null,
-    };
-  }
-
-  componentDidMount() {
-    this.getAccountBalance();
-  }
-
-  getAccountBalance() {
-    AWS.config.update({
-      accessKeyId: 'YOUR_ACCESS_KEY_HERE',
-      secretAccessKey: 'YOUR_SECRET_KEY_HERE',
-      region: 'us-east-1',
-    });
-
-    const mTurkClient = new AWS.MTurk();
-    mTurkClient.getAccountBalance((err, data) => {
-      if (err) {
-        console.warn('Error making the mTurk API call:', err);
-      } else {
-        // The call was a success
-        const balance = `$${data.AvailableBalance}`;
-        this.setState({ mturkAccountBalance: balance });
-      }
-    });
-  }
-  render() {
-    var accountBalanceToDisplay = 'loading...';
-    if (this.state.mturkAccountBalance != null) {
-      accountBalanceToDisplay = this.state.mturkAccountBalance;
-    }
-
-    return (
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to my MTurk application</h1>
-        </header>
-        <p className='App-intro'>
-          Your MTurk Requester account balance is {accountBalanceToDisplay}
-        </p>
-      </div>
-    );
-  }
-}
-
-AWS.config.update({
-  accessKeyId: 'YOUR_ACCESS_KEY_HERE',
-  secretAccessKey: 'YOUR_SECRET_KEY_HERE',
+// Create a client for the MTurk API
+const mturk = new AWS.MTurk({
+  accessKeyId: 'YOUR_ACCESS_KEY',
+  secretAccessKey: 'YOUR_SECRET_KEY',
   region: 'us-east-1',
-  endpoint: 'https://mturk-requester-sandbox.us-east-1.amazonaws.com',
 });
+
+// Create a HIT
+mturk.createHIT(
+  {
+    MaxAssignments: 1,
+    AutoApprovalDelayInSeconds: 86400,
+    LifetimeInSeconds: 172800,
+    AssignmentDurationInSeconds: 600,
+    Reward: '0.50',
+    Title: 'Complete a survey',
+    Description:
+      'Answer a few questions about your experience with our website',
+    Question: `<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+        <Overview>
+            <Title>Complete a survey</Title>
+            <FormattedContent><![CDATA[
+                <p>Answer a few questions about your experience with our website.</p>
+            ]]></FormattedContent>
+        </Overview>
+        <Question>
+            <QuestionIdentifier>experience</QuestionIdentifier>
+            <DisplayName>How was your experience with our website?</DisplayName>
+            <IsRequired>true</IsRequired>
+            <QuestionContent>
+                <FormattedContent><![CDATA[
+                    <p>On a scale of 1 to 5, how would you rate your experience with our website?</p>
+                ]]></FormattedContent>
+            </QuestionContent>
+            <AnswerSpecification>
+                <SelectionAnswer>
+                    <MinSelectionCount>1</MinSelectionCount>
+                    <MaxSelectionCount>1</MaxSelectionCount>
+                    <StyleSuggestion>radiobutton</StyleSuggestion>
+                    <Selections>
+                        <Selection>
+                            <SelectionIdentifier>1</SelectionIdentifier>
+                            <Text>1 - Very poor</Text>
+                        </Selection>
+                        <Selection>
+                            <SelectionIdentifier>2</SelectionIdentifier>
+                            <Text>2 - Poor</Text>
+                        </Selection>
+                        <Selection>
+                            <SelectionIdentifier>3</SelectionIdentifier>
+                            <Text>3 - Average</Text>
+                        </Selection>
+                        <Selection>
+                            <SelectionIdentifier>4</SelectionIdentifier>
+                            <Text>4 - Good</Text>
+                        </Selection>
+                        <Selection>
+                            <SelectionIdentifier>5</SelectionIdentifier>
+                            <Text>5 - Very good</Text>
+                        </Selection>
+                    </Selections>
+                </SelectionAnswer>
+            </AnswerSpecification>
+        </Question>
+    </QuestionForm>`,
+  },
+  (err, data) => {
+    if (err) {
+      console.log(err, err.stack);
+    } else {
+      console.log(data.HIT.HITId);
+    }
+  }
+);
