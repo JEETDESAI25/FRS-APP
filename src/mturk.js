@@ -1,26 +1,24 @@
 import AWS from 'aws-sdk';
 
-const AWS = require('aws-sdk');
-
-// Create a client for the MTurk API
+// API
 const mturk = new AWS.MTurk({
-  accessKeyId: 'YOUR_ACCESS_KEY',
-  secretAccessKey: 'YOUR_SECRET_KEY',
-  region: 'us-east-1',
+	accessKeyId: 'YOUR_ACCESS_KEY',
+	secretAccessKey: 'YOUR_SECRET_KEY',
+	region: 'us-east-1',
 });
 
-// Create a HIT
+// HIT
 mturk.createHIT(
-  {
-    MaxAssignments: 1,
-    AutoApprovalDelayInSeconds: 86400,
-    LifetimeInSeconds: 172800,
-    AssignmentDurationInSeconds: 600,
-    Reward: '0.50',
-    Title: 'Complete a survey',
-    Description:
-      'Answer a few questions about your experience with our website',
-    Question: `<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
+	{
+		MaxAssignments: 1,
+		AutoApprovalDelayInSeconds: 86400,
+		LifetimeInSeconds: 172800,
+		AssignmentDurationInSeconds: 600,
+		Reward: '0.50',
+		Title: 'Complete a survey',
+		Description:
+			'Answer a few questions about your experience with our website',
+		Question: `<QuestionForm xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd">
         <Overview>
             <Title>Complete a survey</Title>
             <FormattedContent><![CDATA[
@@ -67,12 +65,26 @@ mturk.createHIT(
             </AnswerSpecification>
         </Question>
     </QuestionForm>`,
-  },
-  (err, data) => {
-    if (err) {
-      console.log(err, err.stack);
-    } else {
-      console.log(data.HIT.HITId);
-    }
-  }
+	},
+	(err, data) => {
+		if (err) {
+			console.log(err, err.stack);
+		} else {
+			console.log(data.HIT.HITId);
+		}
+	}
 );
+
+// GET answers provided by workers.
+const params = {
+	AssignmentId: 'ASSIGNMENT_ID',
+};
+
+mturk.getAssignment(params, function (err, data) {
+	if (err) {
+		console.log(err, err.stack);
+	} else {
+		const answers = data.Answer;
+		console.log(answers);
+	}
+});
