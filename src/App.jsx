@@ -22,7 +22,7 @@ function App() {
 			</div>
 			<div className='category-container'>
 				<label htmlFor='category-selector' className='category-label'>
-					Select Food Category:{' '}
+					Select Your Desired Meal:{' '}
 				</label>
 				<select
 					name='category'
