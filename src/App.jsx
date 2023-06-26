@@ -15,7 +15,10 @@ function App() {
 		<div className='app'>
 			<div className='banner'>
 				<h1 className='header'>Coco Food Recommender</h1>
-				<p>Welcome to Cococ Food Recommender !</p>
+				<p>
+					Trust Coco to deliver personalized food recommendations tailored to
+					your unique tastes and preferences!
+				</p>
 			</div>
 			<div className='category-container'>
 				<label htmlFor='category-selector' className='category-label'>
@@ -55,6 +58,9 @@ function App() {
 						/>
 					))}
 			</div>
+			<footer className='app-footer'>
+				<p>© 2023 Coco Food Recommender. All rights reserved.</p>
+			</footer>
 		</div>
 	);
 }
