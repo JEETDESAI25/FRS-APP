@@ -82,7 +82,7 @@ body {
 .category-label,
 .category-selector {
 	margin: 1rem 0;
-	width: 50%; /* Reduce width */
+	width: 50%;
 }
 
 .category-label {
