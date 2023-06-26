@@ -53,3 +53,7 @@ button:hover {
 	background-color: #a52a51;
 	color: #d294a8;
 }
+
+.food-card.selected {
+	background-color: #d294a8;
+}
