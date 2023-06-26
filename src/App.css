@@ -93,8 +93,6 @@ body {
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	grid-gap: 2rem;
 	margin-top: 2rem;
-	/* justify-items: center; */
-	/* justify-content: center; */
 }
 
 .app-footer {
@@ -106,4 +104,18 @@ body {
 	align-items: center;
 	background-color: #a52a51;
 	color: #fff;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.banner .header,
+.banner p {
+	animation-name: fadeIn;
+	animation-duration: 3s;
+	animation-timing-function: ease-in;
 }
