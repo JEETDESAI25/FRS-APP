@@ -9,6 +9,7 @@
 	max-width: 300px;
 	padding: 16px;
 	transition: transform 0.2s ease-in-out;
+	color: #fff;
 }
 
 .food-card:hover {
@@ -27,35 +28,13 @@
 	font-size: 24px;
 	font-weight: bold;
 	margin: 8px 0;
-	color: #d294a8;
+	color: #fff;
 }
 
 .food-description {
 	font-size: 16px;
 	line-height: 1.5;
-	color: #d294a8;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-}
-
-.star-rating {
-	display: inline-flex;
-	font-size: 24px;
-	margin-bottom: 8px;
-}
-
-.star {
-	color: #d3d3d3;
-	cursor: pointer;
-	margin-right: 4px;
-	transition: color 0.2s;
-}
-
-.star.active {
-	color: gold;
+	color: #fff;
 }
 
 button {
