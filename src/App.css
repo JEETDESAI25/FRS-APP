@@ -105,6 +105,20 @@ body {
 	background-color: #a52a51;
 	color: #fff;
 }
+.select-button {
+	/*margin-left: auto;*/
+	background-color: #a52a51;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 8px 16px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+.select-button:hover {
+	transform: translateY(-5px);;
+}
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;

@@ -35,7 +35,7 @@ function FoodCard({
 }
 
 FoodCard.propTypes = {
-	id: PropTypes.string.isRequired,
+	// id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	calories: PropTypes.number.isRequired,
 	imageUrl: PropTypes.string.isRequired,
