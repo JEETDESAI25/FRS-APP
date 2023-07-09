@@ -57,3 +57,14 @@ button:hover {
 .food-card.selected {
 	background-color: #d294a8;
 }
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.food-card {
+	animation: fadeIn 5s ease-in-out;
+}
